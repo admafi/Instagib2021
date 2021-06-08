@@ -503,6 +503,11 @@ void TossClientWeapon(gentity_t *self, vec3_t direction, float speed)
 		return;
 	}
 
+	if (weapon == WP_DISRUPTOR) //afi
+	{
+		return;
+	}
+
 	if (weapon == WP_EMPLACED_GUN ||
 		weapon == WP_TURRET)
 	{

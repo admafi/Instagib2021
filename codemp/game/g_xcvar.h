@@ -153,7 +153,7 @@ XCVAR_DEF( g_siegeTeamSwitch,			"1",			NULL,				CVAR_SERVERINFO|CVAR_ARCHIVE,			
 XCVAR_DEF( g_slowmoDuelEnd,				"0",			NULL,				CVAR_ARCHIVE,									qtrue )
 XCVAR_DEF( g_smoothClients,				"1",			NULL,				CVAR_NONE,										qfalse )
 XCVAR_DEF( g_spawnInvulnerability,		"3000",			NULL,				CVAR_ARCHIVE,									qtrue )
-XCVAR_DEF( g_speed,						"250",			NULL,				CVAR_NONE,										qtrue )
+XCVAR_DEF( g_speed,						"600",			NULL,				CVAR_NONE,										qtrue )
 XCVAR_DEF( g_statLog,					"0",			NULL,				CVAR_ARCHIVE,									qfalse )
 XCVAR_DEF( g_statLogFile,				"statlog.log",	NULL,				CVAR_ARCHIVE,									qfalse )
 XCVAR_DEF( g_stepSlideFix,				"1",			NULL,				CVAR_SERVERINFO,								qtrue )

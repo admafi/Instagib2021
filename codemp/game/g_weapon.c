@@ -48,11 +48,11 @@ static vec3_t muzzle;
 
 // Tenloss Disruptor
 //----------
-#define DISRUPTOR_MAIN_DAMAGE			30 //40
-#define DISRUPTOR_MAIN_DAMAGE_SIEGE		50
+#define DISRUPTOR_MAIN_DAMAGE			9999 //afi
+#define DISRUPTOR_MAIN_DAMAGE_SIEGE		9999
 #define DISRUPTOR_NPC_MAIN_DAMAGE_CUT	0.25f
 
-#define DISRUPTOR_ALT_DAMAGE			100 //125
+#define DISRUPTOR_ALT_DAMAGE			9999 //afi
 #define DISRUPTOR_NPC_ALT_DAMAGE_CUT	0.2f
 #define DISRUPTOR_ALT_TRACES			3		// can go through a max of 3 damageable(sp?) entities
 #define DISRUPTOR_CHARGE_UNIT			50.0f	// distruptor charging gives us one more unit every 50ms--if you change this, you'll have to do the same in bg_pmove
