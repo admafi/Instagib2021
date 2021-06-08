@@ -3378,9 +3378,9 @@ void ClientSpawn(gentity_t *ent) {
 
 	client->ps.clientNum = index;
 	//give default weapons
-	client->ps.stats[STAT_WEAPONS] = ( 1 << WP_NONE );
-	client->ps.stats[STAT_WEAPONS] = (1 << WP_DISRUPTOR); //afi
-	client->ps.ammo[WP_DISRUPTOR] = 9999; //afi
+	client->ps.stats[STAT_WEAPONS] |= (1 << WP_DISRUPTOR); //afi
+	client->ps.ammo[AMMO_POWERCELL] = 9999;
+	client->ps.weapon = WP_DISRUPTOR;
 
 
 	if (level.gametype == GT_DUEL || level.gametype == GT_POWERDUEL)
@@ -3394,31 +3394,31 @@ void ClientSpawn(gentity_t *ent) {
 
 
 
-	if ( level.gametype != GT_HOLOCRON
+	if (level.gametype != GT_HOLOCRON
 		&& level.gametype != GT_JEDIMASTER
 		&& !HasSetSaberOnly()
-		&& !AllForceDisabled( g_forcePowerDisable.integer )
-		&& g_jediVmerc.integer )
+		&& !AllForceDisabled(g_forcePowerDisable.integer)
+		&& g_jediVmerc.integer)
 	{
-		if ( level.gametype >= GT_TEAM && (client->sess.sessionTeam == TEAM_BLUE || client->sess.sessionTeam == TEAM_RED) )
+		if (level.gametype >= GT_TEAM && (client->sess.sessionTeam == TEAM_BLUE || client->sess.sessionTeam == TEAM_RED))
 		{//In Team games, force one side to be merc and other to be jedi
-			if ( level.numPlayingClients > 0 )
+			if (level.numPlayingClients > 0)
 			{//already someone in the game
 				int forceTeam = TEAM_SPECTATOR;
-				for ( i = 0 ; i < level.maxclients ; i++ )
+				for (i = 0; i < level.maxclients; i++)
 				{
-					if ( level.clients[i].pers.connected == CON_DISCONNECTED ) {
+					if (level.clients[i].pers.connected == CON_DISCONNECTED) {
 						continue;
 					}
-					if ( level.clients[i].sess.sessionTeam == TEAM_BLUE || level.clients[i].sess.sessionTeam == TEAM_RED )
+					if (level.clients[i].sess.sessionTeam == TEAM_BLUE || level.clients[i].sess.sessionTeam == TEAM_RED)
 					{//in-game
-						if ( WP_HasForcePowers( &level.clients[i].ps ) )
+						if (WP_HasForcePowers(&level.clients[i].ps))
 						{//this side is using force
 							forceTeam = level.clients[i].sess.sessionTeam;
 						}
 						else
 						{//other team is using force
-							if ( level.clients[i].sess.sessionTeam == TEAM_BLUE )
+							if (level.clients[i].sess.sessionTeam == TEAM_BLUE)
 							{
 								forceTeam = TEAM_RED;
 							}
@@ -3430,17 +3430,17 @@ void ClientSpawn(gentity_t *ent) {
 						break;
 					}
 				}
-				if ( WP_HasForcePowers( &client->ps ) && client->sess.sessionTeam != forceTeam )
+				if (WP_HasForcePowers(&client->ps) && client->sess.sessionTeam != forceTeam)
 				{//using force but not on right team, switch him over
-					const char *teamName = TeamName( forceTeam );
+					const char* teamName = TeamName(forceTeam);
 					//client->sess.sessionTeam = forceTeam;
-					SetTeam( ent, (char *)teamName );
+					SetTeam(ent, (char*)teamName);
 					return;
 				}
 			}
 		}
-
-		if ( WP_HasForcePowers( &client->ps ) )
+	}
+		/*if ( WP_HasForcePowers( &client->ps ) )
 		{
 			client->ps.trueNonJedi = qfalse;
 			client->ps.trueJedi = qtrue;
@@ -3522,7 +3522,7 @@ void ClientSpawn(gentity_t *ent) {
 			client->ps.weapon = WP_MELEE;
 		}
 	}
-
+	*/
 	/*
 	client->ps.stats[STAT_HOLDABLE_ITEMS] |= ( 1 << HI_BINOCULARS );
 	client->ps.stats[STAT_HOLDABLE_ITEM] = BG_GetItemIndexByTag(HI_BINOCULARS, IT_HOLDABLE);

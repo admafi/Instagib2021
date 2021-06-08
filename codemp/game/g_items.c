@@ -3034,10 +3034,11 @@ void ClearRegisteredItems( void ) {
 	memset( itemRegistered, 0, sizeof( itemRegistered ) );
 
 	// players always start with the base weapon
-	RegisterItem( BG_FindItemForWeapon( WP_BRYAR_PISTOL ) );
-	RegisterItem( BG_FindItemForWeapon( WP_STUN_BATON ) );
-	RegisterItem( BG_FindItemForWeapon( WP_MELEE ) );
-	RegisterItem( BG_FindItemForWeapon( WP_SABER ) );
+	//RegisterItem( BG_FindItemForWeapon( WP_BRYAR_PISTOL ) );
+	//RegisterItem( BG_FindItemForWeapon( WP_STUN_BATON ) );
+	//RegisterItem( BG_FindItemForWeapon( WP_MELEE ) );
+	//RegisterItem( BG_FindItemForWeapon( WP_SABER ) );
+	RegisterItem(BG_FindItemForWeapon(WP_DISRUPTOR)); //afi
 
 	if (level.gametype == GT_SIEGE)
 	{ //kind of cheesy, maybe check if siege class with disp's is gonna be on this map too
